@@ -22,7 +22,7 @@ $m = query("SELECT * FROM tb_mahasiswa WHERE id = $id");
     <li>NIM : <?= $m['nim']; ?></li>
     <li>Nama : <?= $m['nama']; ?></li>
     <li>Pembimbing Akademik : <?= $m['pa']; ?></li>
-    <li><a href="">ubah</a> | <a href="">hapus</a></li>
+    <li><a href="ubahm.php?id=<?= $m['id']; ?>">ubah</a> | <a href="hapusm.php?id=<?= $m['id']; ?>" onclick="return confirm('apakah anda yakin ingin menghapus data?');">hapus</a></li>
     <li><a href="index.php">Kembali ke daftar mahasiswa</a></li>
   </ul>
 </body>

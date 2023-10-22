@@ -40,3 +40,26 @@ function tambah($data)
   echo mysqli_error($conn);
   return mysqli_affected_rows($conn);
 }
+
+function hapusm($id)
+{
+  $conn = koneksi();
+  mysqli_query($conn, "DELETE FROM tb_mahasiswa WHERE id = $id") or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+
+function ubahm($data)
+{
+  $conn = koneksi();
+
+  $id = $data['id'];
+  $nama = htmlspecialchars($data['nama']);
+  $nim = htmlspecialchars($data['nim']);
+
+  $query = "UPDATE tb_mahasiswa SET
+              nama = '$nama',
+              nim = '$nim'
+            WHERE id = $id ";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
