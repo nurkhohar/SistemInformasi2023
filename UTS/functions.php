@@ -63,3 +63,23 @@ function ubahm($data)
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
 }
+
+function carim($keyword)
+{
+  $conn = koneksi();
+
+  $query = "SELECT * FROM tb_mahasiswa
+              WHERE 
+            nama LIKE '%$keyword%' OR
+            nim LIKE '%$keyword%'
+          ";
+
+  $result = mysqli_query($conn, $query);
+
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+
+  return $rows;
+}
