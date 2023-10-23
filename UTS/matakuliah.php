@@ -8,11 +8,11 @@ if (!isset($_SESSION['login'])) {
 }
 
 require 'functions.php';
-$dosen = query("SELECT * FROM tb_dosen");
+$matakuliah = query("SELECT * FROM tb_matakuliah");
 
 // ketika tombol cari diklik
-if (isset($_POST['carid'])) {
-  $dosen = carid($_POST['keyword']);
+if (isset($_POST['carimk'])) {
+  $matakuliah = carimk($_POST['keyword']);
 }
 
 ?>
@@ -23,7 +23,7 @@ if (isset($_POST['carid'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Daftar Dosen</title>
+  <title>Daftar Mata Kuliah</title>
 </head>
 
 <body align=center>
@@ -36,11 +36,11 @@ if (isset($_POST['carid'])) {
     <li style="float:left"><a href="matakuliah.php">Mata Kuliah</a>
     <li style="float:right"><a class="active" href="logout.php">Logout</a></li>
   </ul>
-  <h3>Daftar Dosen</h3>
+  <h3>Daftar Mata Kuliah</h3>
   <br>
 
   <form action="" method="POST">
-    <button type="submit" name="carid">Cari!</button>
+    <button type="submit" name="carimk">Cari!</button>
     <input type="text" name="keyword" size="40" placeholder="masukkan keyword pencarian.." autocomplete="off" autofocus>
   </form>
   <br>
@@ -48,26 +48,26 @@ if (isset($_POST['carid'])) {
   <table align=center border="1" cellpadding="10" cellspacing="0">
     <tr>
       <th>#</th>
-      <th>NIDN</th>
-      <th>Nama</th>
-      <th>Aksi</th>
+      <th>Kode MK</th>
+      <th>Nama MK</th>
+      <th>Jumlah SKS</th>
     </tr>
 
-    <?php if (empty($dosen)) : ?>
+    <?php if (empty($matakuliah)) : ?>
       <tr>
         <td colspan="4">
-          <p style="color: red; font-style: italic;">data dosen tidak ditemukan!</p>
+          <p style="color: red; font-style: italic;">data mata kuliah tidak ditemukan!</p>
         </td>
       </tr>
     <?php endif; ?>
 
     <?php $i = 1;
-    foreach ($dosen as $d) : ?>
+    foreach ($matakuliah as $mk) : ?>
       <tr>
         <td><?= $i++; ?></td>
-        <td><?= $d['nidn']; ?></td>
-        <td><?= $d['nama']; ?></td>
-        <td><a href="ubahd.php?id=<?= $d['id']; ?>">Edit</a> | <a href="hapusd.php?id=<?= $d['id']; ?>" onclick="return confirm('apakah anda yakin ingin menghapus data?');">Hapus</a></li>
+        <td><?= $mk['kode_mk']; ?></td>
+        <td><?= $mk['nama_mk']; ?></td>
+        <td><?= $mk['sks']; ?></td>
         </td>
       </tr>
     <?php endforeach; ?>

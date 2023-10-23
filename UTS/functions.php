@@ -166,6 +166,26 @@ function carid($keyword)
   return $rows;
 }
 
+function carimk($keyword)
+{
+  $conn = koneksi();
+
+  $query = "SELECT * FROM tb_matakuliah
+              WHERE 
+            nama_mk LIKE '%$keyword%' OR
+            kode_mk LIKE '%$keyword%'
+          ";
+
+  $result = mysqli_query($conn, $query);
+
+  $rows = [];
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows[] = $row;
+  }
+
+  return $rows;
+}
+
 function login($data)
 {
   $conn = koneksi();

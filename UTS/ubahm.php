@@ -51,6 +51,7 @@ if (isset($_POST['ubahm'])) {
     <li style="float:left"><a href="tambahm.php">Tambah Data Mahasiswa</a>
     <li style="float:left"><a href="dosen.php">Dosen</a></li>
     <li style="float:left"><a href="tambahd.php">Tambah Data Dosen</a>
+    <li style="float:left"><a href="matakuliah.php">Mata Kuliah</a>
     <li style="float:right"><a class="active" href="logout.php">Logout</a></li>
   </ul>
   <h3>Form Ubah Data Mahasiswa</h3>
