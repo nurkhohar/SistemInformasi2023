@@ -11,7 +11,7 @@ require 'functions.php';
 
 // jika tidak ada id di url
 if (!isset($_GET['id'])) {
-  header("Location: index.php");
+  header("Location: dosen.php");
   exit;
 }
 
@@ -19,14 +19,14 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 // query mahasiswa berdasarkan id
-$m = query("SELECT * FROM tb_mahasiswa WHERE id = $id");
+$d = query("SELECT * FROM tb_dosen WHERE id = $id");
 
 // cek apakah tombol ubah sudah ditekan
-if (isset($_POST['ubahm'])) {
-  if (ubahm($_POST) > 0) {
+if (isset($_POST['ubahd'])) {
+  if (ubahd($_POST) > 0) {
     echo "<script>
             alert('data berhasil diubah');
-            document.location.href = 'mahasiswa.php';
+            document.location.href = 'dosen.php';
          </script>";
   } else {
     echo "data gagal diubah!";
@@ -41,7 +41,7 @@ if (isset($_POST['ubahm'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Ubah Data Mahasiswa</title>
+  <title>Ubah Data Dosen</title>
 </head>
 
 <body align=center>
@@ -53,21 +53,21 @@ if (isset($_POST['ubahm'])) {
     <li style="float:left"><a href="tambahd.php">Tambah Data Dosen</a>
     <li style="float:right"><a class="active" href="logout.php">Logout</a></li>
   </ul>
-  <h3>Form Ubah Data Mahasiswa</h3>
+  <h3>Form Ubah Data Dosen</h3>
   <form action="" method="POST">
-    <input type="hidden" name="id" value="<?= $m['id']; ?>">
+    <input type="hidden" name="id" value="<?= $d['id']; ?>">
     <table align=center border="1" cellpadding="5" cellspacing="0">
       <tr>
         <td>Nama</td>
-        <td>NIM</td>
+        <td>NIDN</td>
       </tr>
       <tr>
-        <td> <input type="text" name="nama" autofocus required value="<?= $m['nama']; ?>"></td>
-        <td> <input type="text" name="nim" required value="<?= $m['nim']; ?>"></td>
+        <td> <input type="text" name="nama" autofocus required value="<?= $d['nama']; ?>"></td>
+        <td> <input type="text" name="nidn" required value="<?= $d['nidn']; ?>"></td>
       </tr>
     </table>
     <br>
-    <button type="submit" name="ubahm">Ubah Data!</button>
+    <button type="submit" name="ubahd">Ubah Data!</button>
   </form>
 </body>
 

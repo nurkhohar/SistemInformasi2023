@@ -1,0 +1,32 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#atas {
+  background-color: #333;
+}
+
+.home {
+  background-color: #3b1cc2;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+#lbl {
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}

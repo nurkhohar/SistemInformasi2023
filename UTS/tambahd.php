@@ -10,11 +10,11 @@ if (!isset($_SESSION['login'])) {
 require 'functions.php';
 
 // cek apakah tombol tambah sudah ditekan
-if (isset($_POST['tambahm'])) {
-  if (tambahm($_POST) > 0) {
+if (isset($_POST['tambahd'])) {
+  if (tambahd($_POST) > 0) {
     echo "<script>
             alert('data berhasil ditambahkan');
-            document.location.href = 'mahasiswa.php';
+            document.location.href = 'dosen.php';
          </script>";
   } else {
     echo "data gagal ditambahkan!";
@@ -29,7 +29,7 @@ if (isset($_POST['tambahm'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Tambah Data Mahasiswa</title>
+  <title>Tambah Data Dosen</title>
 </head>
 
 <body align=center>
@@ -41,23 +41,23 @@ if (isset($_POST['tambahm'])) {
     <li style="float:left"><a href="tambahd.php">Tambah Data Dosen</a>
     <li style="float:right"><a class="active" href="logout.php">Logout</a></li>
   </ul>
-  <h3>Form Tambah Data Mahasiswa</h3>
+  <h3>Form Tambah Data Dosen</h3>
   <form action="" method="POST">
     <ul>
       <li>
-        <label id=lbl size="40">
-          N.I.M :
-          <input type="text" name="nim" autofocus required>
+        <label id=lbl>
+          Nama :
+          <input type="text" name="nama" autofocus required>
         </label>
       </li>
       <li>
         <label id=lbl>
-          Nama :
-          <input type="text" name="nama" required>
+          NIDN :
+          <input type="text" name="nidn" required>
         </label>
       </li>
       <li>
-        <button type="submit" name="tambahm">Tambah Data!</button>
+        <button type="submit" name="tambahd">Tambah Data!</button>
       </li>
     </ul>
   </form>

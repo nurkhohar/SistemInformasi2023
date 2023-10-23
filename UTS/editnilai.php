@@ -11,7 +11,7 @@ require 'functions.php';
 
 // jika tidak ada id di url
 if (!isset($_GET['id'])) {
-  header("Location: index.php");
+  header("Location: mahasiswa.php");
   exit;
 }
 
@@ -22,8 +22,8 @@ $id = $_GET['id'];
 $m = query("SELECT * FROM tb_mahasiswa WHERE id = $id");
 
 // cek apakah tombol ubah sudah ditekan
-if (isset($_POST['ubahm'])) {
-  if (ubahm($_POST) > 0) {
+if (isset($_POST['ubahn'])) {
+  if (ubahn($_POST) > 0) {
     echo "<script>
             alert('data berhasil diubah');
             document.location.href = 'mahasiswa.php';
@@ -53,21 +53,31 @@ if (isset($_POST['ubahm'])) {
     <li style="float:left"><a href="tambahd.php">Tambah Data Dosen</a>
     <li style="float:right"><a class="active" href="logout.php">Logout</a></li>
   </ul>
-  <h3>Form Ubah Data Mahasiswa</h3>
+  <h3>Edit Nilai Mahasiswa</h3>
   <form action="" method="POST">
     <input type="hidden" name="id" value="<?= $m['id']; ?>">
     <table align=center border="1" cellpadding="5" cellspacing="0">
       <tr>
-        <td>Nama</td>
         <td>NIM</td>
+        <td>Nama</td>
+        <td>Antena dan Propagasi</td>
+        <td>Sistem Tertanam dan Periferal</td>
+        <td>Pengolahan Isyarat Digital</td>
+        <td>Algoritma dan Struktur Data</td>
+        <td>Sistem Informasi</td>
       </tr>
       <tr>
-        <td> <input type="text" name="nama" autofocus required value="<?= $m['nama']; ?>"></td>
-        <td> <input type="text" name="nim" required value="<?= $m['nim']; ?>"></td>
+        <td> <?= $m['nim']; ?></td>
+        <td> <?= $m['nama']; ?></td>
+        <td> <input type="text" name="E301" value="<?= $m['E301']; ?>"></td>
+        <td> <input type="text" name="E302" value="<?= $m['E302']; ?>"></td>
+        <td> <input type="text" name="E303" value="<?= $m['E303']; ?>"></td>
+        <td> <input type="text" name="E304" value="<?= $m['E304']; ?>"></td>
+        <td> <input type="text" name="E305" value="<?= $m['E305']; ?>"></td>
       </tr>
     </table>
     <br>
-    <button type="submit" name="ubahm">Ubah Data!</button>
+    <button type="submit" name="ubahn">Ubah Data!</button>
   </form>
 </body>
 
